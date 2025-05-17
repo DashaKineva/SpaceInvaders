@@ -133,6 +133,35 @@ void game() //основная функция игры
             timer++;
             infinity_mode();
         }
-      //в процессе
+        //если персонаж мертв
+        if (character.get_health() == 0)
+        {
+            if (death_m == 0)
+            {
+                //смена музыки при смерте
+                back_sound.stop();
+                tank_shot_music.stop();
+                music_death_f();
+                death_m = 1;
+            }
+            window.clear();
+
+            std::stringstream loseText_fill;
+            loseText_fill << "You Lose! Your score:  " << global_score << "\nRound: " << round_count;
+            scoreText.setString(loseText_fill.str());
+
+            scoreText.setPosition(55, 200);
+            scoreText.setCharacterSize(40);
+            window.draw(scoreText);
+            window.display();
+        }
+        //текст очков
+        std::stringstream scoreText_Fill;
+        scoreText_Fill << "Score: " << global_score << "\nRound: " << round_count;
+        scoreText.setString(scoreText_Fill.str());
+        //текст жизни
+        std::stringstream healthText_Fill;
+        healthText_Fill << "Health: " << character.get_health();
+        healthText.setString(healthText_Fill.str());
     }
 }
