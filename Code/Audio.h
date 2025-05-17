@@ -4,6 +4,7 @@
 sf::Music tank_shot_music;
 sf::Music back_sound;
 sf::Music music_death;
+
 void music_shot()
 {
 	tank_shot_music.openFromFile("Audio/tank_shot.mp3");
